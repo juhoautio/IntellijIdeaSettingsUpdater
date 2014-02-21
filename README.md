@@ -49,6 +49,10 @@ Or you can manually tell which files to update:
 xml
 ```
 
+## Safety
+
+A backup is always created before modifying the original file (`workspace.xml-bak`). In case you need to revert the changes..
+
 ## Future work
 
 - Making the script generic so that other settings changes can be requested with a simple syntax
