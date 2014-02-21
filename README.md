@@ -63,3 +63,9 @@ ttings/option/[@name='downloadDocsAutomatically']/value=true
 cally=true
 ```
 - Improving the unit test & script structure
+- Change tests like `if not maven` to future-proof, for example this:
+```sh
+./updater.py:93: FutureWarning: The behavior of this method will change in future versions.  Use specific 'len(elem)'\
+or 'elem is not None' test instead.
+  if not maven:
+```
