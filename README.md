@@ -33,7 +33,7 @@ Usage? just run
 ## Usage examples
 
 You have two IDEA projects in a directory called `IdeaProjects`. They have the following `workspace.xml` settings files:
-```
+```sh
 ~/IdeaProjects/importAutomatically/.idea/workspace.xml
 ~/IdeaProjects/no_maven_settings/.idea/workspace.xml
 ```
@@ -45,7 +45,8 @@ To update the maven import settings for these projects, run the following comman
 
 Or you can manually tell which files to update:
 ```sh
-./updater.py ~/IdeaProjects/importAutomatically/.idea/workspace.xml ~/IdeaProjects/no_maven_settings/.idea/workspace.xml
+./updater.py ~/IdeaProjects/importAutomatically/.idea/workspace.xml ~/IdeaProjects/no_maven_settings/.idea/workspace.\
+xml
 ```
 
 ## Future work
@@ -53,10 +54,12 @@ Or you can manually tell which files to update:
 - Making the script generic so that other settings changes can be requested with a simple syntax
   - for example:
 ```sh
-./updater.py --set-value component[@name='MavenImportPreferences']/option[@name='importingSettings']/MavenImportingSettings/option/[@name='downloadDocsAutomatically']/value=true
+./updater.py --set-value component[@name='MavenImportPreferences']/option[@name='importingSettings']/MavenImportingSe\
+ttings/option/[@name='downloadDocsAutomatically']/value=true
 ```
   - or for example a specialized feature for setting options, something like this:
 ```sh
-./updater.py --set-option MavenImportPreferences/importingSettings/MavenImportingSettings/option/downloadDocsAutomatically=true
+./updater.py --set-option MavenImportPreferences/importingSettings/MavenImportingSettings/option/downloadDocsAutomati\
+cally=true
 ```
 - Improving the unit test & script structure
