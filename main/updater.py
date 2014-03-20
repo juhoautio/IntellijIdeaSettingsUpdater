@@ -206,7 +206,7 @@ if __name__ == '__main__':
     parser = OptionParser()
     parser.add_option("-d", "--directory", dest="directory",
                       help="directory of IDEA projects to scan & update. All immediate sub-folders are scanned for \
-                           .idea/workspace.xml", metavar="FILE")
+                           .idea/workspace.xml", metavar="DIRECTORY")
     parser.set_usage('%prog [<workspace file(s)>] [options]')
     (options, args) = parser.parse_args()
 
