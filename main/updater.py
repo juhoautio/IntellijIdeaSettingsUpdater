@@ -200,7 +200,7 @@ if __name__ == '__main__':
 
     if args:
         updateFiles(args)
-    elif options:
+    elif options and options.directory:
         scanPattern = options.directory + "/*/.idea/workspace.xml";
         logging.info('scanning ' + scanPattern)
         files = glob.glob(scanPattern)
@@ -209,4 +209,5 @@ if __name__ == '__main__':
         else:
             updateFiles(files)
     else:
-        logging.error("no options or args provided!")
+        print("\nERROR: No options or args provided.\n")
+        parser.print_help()
