@@ -23,6 +23,8 @@ from optparse import OptionParser
 from shutil import copyfile
 from shutil import move
 import glob
+from os.path import isfile
+import sys
 
 __author__ = 'JuhoAutio'
 
@@ -86,7 +88,12 @@ def conditionalWrite(file, xml, write, message):
 
 def update(file, write):
 
-    xml = ET.parse(file)
+    try:
+        xml = ET.parse(file)
+    except ET.ParseError as err:
+        print("ERROR: Couldn't parse file %s. Parsing failed with message '%s'." % (file, err.message))
+        sys.exit(1)
+
     project = xml.getroot()
     maven = project.find("component[@name='MavenImportPreferences']")
 
@@ -172,6 +179,9 @@ class Updater:
 def updateFiles(files):
     count = 0
     for file in files:
+        if not isfile(file):
+            print("ERROR: File doesn't exist with path %s" % file)
+            sys.exit(1)
         logging.info('updating ' + file)
         result = update(file, True)
         if (not result and not (
@@ -211,3 +221,4 @@ if __name__ == '__main__':
     else:
         print("\nERROR: No options or args provided.\n")
         parser.print_help()
+        sys.exit(1)
