@@ -95,6 +95,11 @@ def update(file, write):
         sys.exit(1)
 
     project = xml.getroot()
+    if project.tag != 'project':
+        print("ERROR: XML file with path %s doesn't have a <project> root element."
+              " This doesn't seem to be an IDEA workspace file?" % file)
+        sys.exit(1)
+
     maven = project.find("component[@name='MavenImportPreferences']")
 
     if not maven:
